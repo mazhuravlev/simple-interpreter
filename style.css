@@ -1,0 +1,38 @@
+#result {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.panel-danger .panel-heading {
+    color: red;
+}
+
+.panel-heading {
+    border-bottom: 1px inset gray;
+}
+
+.panel-body {
+    padding: 12px;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 12px;
+}
+
+select {
+    margin-bottom: 12px;
+}
+
+.panel {
+    padding: 12px;
+    margin-top: 24px;
+    background-color: white;
+}
+
+.container-fluid, .container{
+    width: 600px !important;
+    margin-top: 36px;
+    background-color: lightgray;
+    padding: 24px;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Interpreter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Simple expression interpreter</h1>
+    <label for="example-select">Select expression example</label>
+    <select id="example-select" class="form-control">
+        <option>(+ 1 2 (+ 3 4))</option>
+        <option>(max 10 100 3 4)</option>
+        <option>(min 10 100 3 4)</option>
+        <option>(1 2 3 4)</option>
+        <option>(1 (min 7 2 3) (+ 1 1 1) 4)</option>
+        <option>(1 (+ 1 1) (- 7 4) 4)</option>
+        <option>(+ 10 50)</option>
+        <option>(- 20 15)</option>
+        <option>(10 20 (+ 10 20) (- 90 50))</option>
+        <option>(+ 1)</option>
+        <option>(+)</option>
+        <option>(- 1)</option>
+        <option>+ 1 2</option>
+    </select>
+    <label for="input">Or enter expression yourself</label>
+    <textarea class="form-control" id="input">(+ 1 2 (+ 3 4))</textarea>
+    <button class="btn btn-primary btn-block">Eval</button>
+    <div id="result-panel" class="panel panel-default" style="display: none">
+        <div class="panel-heading">Result</div>
+        <div class="panel-body" id="result"></div>
+    </div>
+    <div id="error-panel" class="panel panel-danger" style="display: none">
+        <div class="panel-heading">Error</div>
+        <div id="error"></div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="require.js"></script>
+<script>
+    requirejs(["eval"], function(eval) {
+        $(function () {
+            let errorPanel = $('#error-panel');
+            let resultPanel = $('#result-panel');
+            let input = $('#input');
+            let button = $('button');
+
+            $('select').change(e => {
+                input.val(e.target.value);
+                button.click();
+            });
+
+            button.click(function () {
+                try {
+                    $('#result').text(JSON.stringify(eval(input.val())));
+                    errorPanel.hide();
+                    resultPanel.show();
+                } catch (e) {
+                    console.error(e);
+                    resultPanel.hide();
+                    $('#error').text(e.message);
+                    errorPanel.show();
+                }
+            });
+
+            button.click();
+        });
+    });
+</script>
+</body>
+</html>
