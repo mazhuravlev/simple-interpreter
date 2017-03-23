@@ -30,8 +30,15 @@ select {
     background-color: white;
 }
 
+@media (max-width: 600px) {
+    .container-fluid, .container {
+        width: 100% !important;
+        margin-top: 0 !important;
+    }
+}
+
 .container-fluid, .container{
-    width: 600px !important;
+    width: 600px;
     margin-top: 36px;
     background-color: lightgray;
     padding: 24px;
