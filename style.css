@@ -35,9 +35,13 @@ select {
         width: 100% !important;
         margin-top: 0 !important;
     }
+
+    h1 {
+        font-size: 1.5rem;
+    }
 }
 
-.container-fluid, .container{
+.container-fluid, .container {
     width: 600px;
     margin-top: 36px;
     background-color: lightgray;
